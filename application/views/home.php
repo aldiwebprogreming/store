@@ -76,8 +76,11 @@
 
 	<div class="container mt-5">
 		<h2 class="text-center">Produk Tersedia</h2>
+		<center>
+			<img src="<?= base_url("assets/img/noot.svg") ?>" id="gambar" class="img" style="display:none; height: 500px;">
+		</center>
 
-		<div class="row mt-3">
+		<div class="row mt-3" id="product" style="display: none;">
 
 			<div class="col-sm-4">
 				<div class="card" style="width: 18rem;">
@@ -114,14 +117,13 @@
 	</div>
 	<!-- product -->
 
-	<button type="submit" onclick="alert()">KLIK</button>
-
+		
 	<script>
 		function alert1(){
 			Swal.fire({
-			  title: 'Sweet!',
-			  text: 'Yes Produk tersedia.',
-			  imageUrl: 'https://unsplash.it400/200',
+			  title: 'Yess',
+			  text: 'Produk tersedia.',
+			  imageUrl: '<?= base_url('assets/img/success.svg') ?>',
 			  imageWidth: 400,
 			  imageHeight: 200,
 			  imageAlt: 'Custom image',
@@ -131,9 +133,9 @@
 
 		function alert2(){
 			Swal.fire({
-			  title: 'Sweet!',
-			  text: 'Maaf Produk tidak ada.',
-			  imageUrl: 'https://unsplash.it/400/200',
+			  title: 'Maaf',
+			  text: 'Produk tidak tersedia.',
+			  imageUrl:  "<?= base_url('assets/img/search.svg') ?>",
 			  imageWidth: 400,
 			  imageHeight: 200,
 			  imageAlt: 'Custom image',
@@ -194,8 +196,12 @@
 
 						if (hasil == "Bakongan") {
 							alert1();
+							$("#product").show();
+							$("#gambar").hide()
 						}else {
 							alert2();
+							$("#product").hide();
+							$("#gambar").show()
 						}
 						
 					}
