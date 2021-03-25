@@ -58,6 +58,15 @@
 		 	$prov = $this->db->get_where('tbl_provinsi', array('id_prov' => $id))->result_array();
 		 	echo json_encode($prov);
 		}
+
+
+		function product(){
+
+			$id = $this->input->get('id');
+			$data['get_product'] = $this->db->get_where('tbl_store', array('id' => $id ))->result_array();
+
+			$this->load->view('det_product', $data);
+		}
 	}
 
  ?>

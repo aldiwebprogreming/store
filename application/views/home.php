@@ -15,7 +15,7 @@
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <body>
 
 
@@ -40,6 +40,32 @@
 			        <a class="nav-link disabled" href="#">Disabled</a>
 			      </li>
 			    </ul>
+
+
+			  </div>
+			  <div class="float-right">
+			  	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+			  		<i class="fas fa-shopping-bag"></i>
+				</button>
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Orders</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				    
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				       <!--  <button type="button" class="btn btn-primary">Save changes</button> -->
+				      </div>
+				    </div>
+				  </div>
+				</div>
 			  </div>
 		</div>
 </nav>
@@ -80,37 +106,24 @@
 			<img src="<?= base_url("assets/img/noot.svg") ?>" id="gambar" class="img" style="display:none; height: 500px;">
 		</center>
 
-		<div class="row mt-3" id="product" style="display: none;">
+		<div class="row mt-3" id="product" style="display:;">
+
+			<?php 
+
+				$get = $this->db->get('tbl_store')->result_array();
+				foreach ($get as $data) { ?>
 
 			<div class="col-sm-4">
 				<div class="card" style="width: 18rem;">
-				  <img class="card-img-top" src="<?= base_url() ?>assets/img/1.png" alt="Card image cap">
+				  <img class="card-img-top" src="<?= base_url() ?>assets/img/<?= $data['image'] ?>" alt="Card image cap">
 				  <div class="card-body">
-				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				    <button type="submit" class="btn btn-primary">Order</button>
+				    <p class="card-text"><?= $data['nama_product'] ?></p>
+				   <a href="<?= base_url() ?>ebunga/product?id=<?= $data['id'] ?>" class="btn btn-primary text-center">Order</a>
 				  </div>
 				</div>
 			</div>
 
-			<div class="col-sm-4">
-				<div class="card" style="width: 18rem;">
-				  <img class="card-img-top" src="<?= base_url() ?>assets/img/2.png" alt="Card image cap">
-				  <div class="card-body">
-				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				      <button type="submit" class="btn btn-primary">Order</button>
-				  </div>
-				</div>
-			</div>
-
-			<div class="col-sm-4">
-				<div class="card" style="width: 18rem;">
-				  <img class="card-img-top" src="<?= base_url() ?>assets/img/3.png" alt="Card image cap">
-				  <div class="card-body">
-				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				      <button type="submit" class="btn btn-primary">Order</button>
-				  </div>
-				</div>
-			</div>
+		<?php } ?>
 
 		</div>
 
