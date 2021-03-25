@@ -67,6 +67,52 @@
 
 			$this->load->view('det_product', $data);
 		}
+
+
+		function post_action(){
+
+			if ($this->input->post('kirim')) {
+				
+				$data = [
+
+				'no_tlp' =>$this->input->post('telp_penerima'),
+				'kel' =>$this->input->post('kel'),
+				'kec' =>$this->input->post('kec'),
+				'kab' =>$this->input->post('kab'),
+				'prov' => $this->input->post('prov'),
+				'order' =>'',
+				'qlt' =>$this->input->post('qlt'),
+				'harga' =>'',
+				'harga_total' =>'',
+				'keterangan' =>$this->input->post('note'),
+				'nama_penerima' =>$this->input->post('nama_penerima'),
+				'email_penerima' =>$this->input->post('email_penerima'),
+				'alamat_penerima' =>$this->input->post('alamat_penerima'),
+				'nama_item' =>$this->input->post('nama_item'),
+				'text_item' =>$this->input->post('text_item'),
+				'dari' =>$this->input->post('dari')
+
+				];
+
+				$input = $this->db->insert('tbl_order_store', $data);
+				if ($input) {
+					redirect('ebunga/cart');
+				} else {
+					echo "gagal";
+				}
+			}
+
+		}
+
+
+		function cart(){
+
+			$data['cart'] = $this->db->query("SELECT * FROM tbl_order_store ORDER BY id DESC LIMIT 1")->result_array();
+
+			$this->load->view('cart', $data);
+
+
+		}
 	}
 
  ?>

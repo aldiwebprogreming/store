@@ -91,6 +91,8 @@
 				  	<h2>RP. <?= $data['harga'] ?></h2>
 				  	<hr>
 
+				  	<form method="post" action="<?= base_url() ?>ebunga/post_action">
+
 				  	<!-- step 1  -->
 
 				  	<div id="step1-show">
@@ -103,7 +105,7 @@
 						  <div class="input-group-prepend">
 						    <button class="btn btn-outline-secondary" id="kurang" type="button">-</button>
 						  </div>
-						  <input type="number" class="form-control" id="qlt" placeholder="" aria-label="" aria-describedby="basic-addon1" style="text-align: center;" value="1" min="0" required="">
+						  <input type="number" class="form-control" id="qlt" placeholder="" aria-label="" aria-describedby="basic-addon1" style="text-align: center;" value="1" min="0" required="" name="qlt">
 						  <div class="input-group-prepend">
 						    <button class="btn btn-outline-secondary" id="tambah" type="button">+</button>
 						  </div>
@@ -111,7 +113,7 @@
 
 						 <div class="form-group">
 						    <label for="exampleInputEmail1">Note / catatan</label>
-						    <textarea class="form-control" name="note" style="height: 150px;"></textarea>
+						    <textarea class="form-control" name="note" style="height: 150px;" name="catatan"></textarea>
 						    <small id="emailHelp" class="form-text text-muted">fill in your notes if necessary.</small>
 						 </div>
 						 	<button type="button" id="step1" class="btn btn-primary btn-lg btn-block">Next</button>
@@ -143,21 +145,21 @@
 				  			<div class="col-sm-3">
 				  				<div class="form-group">
 				  					<label>Kecamatan</label>
-				  					<input type="text" name="kab" value="Bakongan" class="form-control" readonly="">
+				  					<input type="text" name="kec" value="Bakongan" class="form-control" readonly="">
 				  				</div>
 				  			</div>
 
 				  			<div class="col-sm-3">
 				  				<div class="form-group">
 				  					<label>Kelurahan</label>
-				  					<input type="text" name="kab" value="Keude Bakongan" class="form-control" readonly="">
+				  					<input type="text" name="kel" value="Keude Bakongan" class="form-control" readonly="">
 				  				</div>
 				  			</div>
 
 				  			<div class="col-sm-12">
 				  				<div class="form-group">
 				  					<label style="font-weight: bold">Receiver Address / Alamat Penerima :</label>
-				  					<textarea class="form-control" style="height: 150px;" placeholder="Enter the address of the recipient of the order"></textarea>
+				  					<textarea class="form-control" style="height: 150px;" placeholder="Enter the address of the recipient of the order" name="alamat_penerima" required=""></textarea>
 				  				</div>
 				  			</div>
 
@@ -171,14 +173,14 @@
 				  			<div class="col-sm-12">
 				  				<div class="form-group">
 				  					<label style="font-weight: bold">Receiver Email / Email Penerima :</label>
-				  					<input type="text" name="email_penerima" class="form-control" required="" placeholder="Receiver email">
+				  					<input type="email" name="email_penerima" class="form-control" required="" placeholder="Receiver email">
 				  				</div>
 				  			</div>
 
 				  			<div class="col-sm-12">
 				  				<div class="form-group">
 				  					<label style="font-weight: bold">Receiver Phone / No.Telp Penerima :</label>
-				  					<input type="number" name="email_penerima" class="form-control" required="" placeholder="Receiver phone">
+				  					<input type="number" name="telp_penerima" class="form-control" required="" placeholder="Receiver phone">
 				  				</div>
 				  			</div>
 				  			<button type="button" id="step2" class="btn btn-primary btn-lg btn-block">Next</button>
@@ -206,32 +208,27 @@
 				  		
 				  			<div class="col-sm-12">
 				  				<div class="form-group">
-				  					<label style="font-weight: bold">Receiver Address / Alamat Penerima :</label>
-				  					<textarea class="form-control" style="height: 150px;" placeholder="Enter the address of the recipient of the order"></textarea>
+				  					<label style="font-weight: bold">Name on Gift / Nama pada Item :</label>
+				  					<input type="text" name="nama_item" class="form-control" placeholder="Dear Jane Doe">
 				  				</div>
 				  			</div>
 
 				  			<div class="col-sm-12">
 				  				<div class="form-group">
-				  					<label style="font-weight: bold">Receiver Name / Nama Penerima :</label>
-				  					<input type="text" name="nama_penerima" class="form-control" required="" placeholder="Receiver name">
+				  					<label style="font-weight: bold">Messages on Gift / Teks pada Item :</label>
+				  					<textarea class="form-control" name="text_item" placeholder="Happy Birthday (Max Length 50)" maxlength="50"></textarea>
 				  				</div>
 				  			</div>
 
-				  			<div class="col-sm-12">
-				  				<div class="form-group">
-				  					<label style="font-weight: bold">Receiver Email / Email Penerima :</label>
-				  					<input type="text" name="email_penerima" class="form-control" required="" placeholder="Receiver email">
-				  				</div>
-				  			</div>
 
 				  			<div class="col-sm-12">
 				  				<div class="form-group">
-				  					<label style="font-weight: bold">Receiver Phone / No.Telp Penerima :</label>
-				  					<input type="number" name="email_penerima" class="form-control" required="" placeholder="Receiver phone">
+				  					<label style="font-weight: bold">From (Optional) / Dari (Opsional) :</label>
+				  					<input type="text" name="dari" class="form-control" required="" placeholder="From Jhon Doe">
 				  				</div>
 				  			</div>
-				  			<button type="button" id="step3" class="btn btn-primary btn-lg btn-block">Next</button>
+				  			
+				  			<input type="submit" name="kirim" class="btn btn-primary btn-lg btn-block" value="View Summary">
 
 				  		</div>
 					  	
@@ -240,7 +237,7 @@
 
 					 <!-- step 3  -->
 
-
+					 </form>
 
 
 				   <!--  <h5 class="card-title">Special title treatment</h5>
